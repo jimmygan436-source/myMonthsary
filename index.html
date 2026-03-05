@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 34th Monthsary Mahal Ko</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background-color: #000000;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 50px;
+            border-radius: 20px;
+            border: 2px solid #ff4757;
+            box-shadow: 0 0 30px #ff4757, inset 0 0 20px rgba(255, 71, 87, 0.2);
+            backdrop-filter: blur(5px);
+            animation: pulse 3s infinite;
+            max-width: 90%;
+            width: 600px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #fff;
+            margin: 0;
+            text-shadow: 0 0 15px #ff4757, 0 0 30px #ff4757;
+            line-height: 1.2;
+        }
+
+        .greeting {
+            font-size: 1.8rem;
+            color: #ffd700;
+            margin-top: 15px;
+            font-weight: 600;
+            text-shadow: 0 0 10px #ffd700;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 1s;
+        }
+
+        .btn {
+            margin-top: 30px;
+            padding: 15px 35px;
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 15px #ff4757;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px #ff4757;
+        }
+
+        .firework {
+            position: absolute;
+            top: 100%;
+            pointer-events: none;
+            z-index: 1;
+            font-size: 30px;
+            animation: explode 2s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 30px #ff4757; }
+            50% { box-shadow: 0 0 50px #ff4757, 0 0 20px #ff4757; }
+            100% { box-shadow: 0 0 30px #ff4757; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3.5rem; }
+            .container { padding: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .greeting { font-size: 1.5rem; }
+            .container { padding: 30px; width: 85%; }
+            .btn { font-size: 1rem; padding: 12px 30px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            .greeting { font-size: 1.2rem; }
+            .container { padding: 20px; width: 90%; }
+            .btn { font-size: 0.9rem; padding: 10px 25px; }
+            .firework { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Happy 34th Monthsary<br>Mahal ko</h1>
+        <div class="greeting">You are my forever favorite person ❤️</div>
+        <a href="message.html" class="btn">View my message 🎆</a>
+    </div>
+
+    <script>
+        const flowers = ['🌹', '🌸', '🌺', '🌻', '🌷', '💐', '🌹', '🌺'];
+        const sparks = ['✨', '💫', '⭐', '🎆', '🎇', '💖'];
+        
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.classList.add('firework');
+            
+            const isSpark = Math.random() > 0.5;
+            const typeList = isSpark ? sparks : flowers;
+            particle.innerText = typeList[Math.floor(Math.random() * typeList.length)];
+            
+            const colors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#ffffff', '#ff6b81'];
+            particle.style.color = colors[Math.floor(Math.random() * colors.length)];
+            
+            const tx = (Math.random() - 0.5) * 600 + 'px';
+            const ty = (Math.random() * -1000 - 300) + 'px';
+            
+            particle.style.setProperty('--tx', tx);
+            particle.style.setProperty('--ty', ty);
+            
+            const size = (Math.random() * 40 + 30) + 'px';
+            particle.style.fontSize = size;
+            
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            
+            document.body.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
+        }
+
+        function launchFireworks() {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    createParticle(centerX, centerY);
+                }, i * 20);
+            }
+        }
+
+        setInterval(() => {
+            launchFireworks();
+        }, 2000);
+    </script>
+</body>
+</html>
