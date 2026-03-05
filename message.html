@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Mahal Ko</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #1a0000 0%, #000000 100%);
+            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+
+        .message-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            border: 2px solid #ff4757;
+            box-shadow: 0 0 40px #ff4757;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1.5s ease-in-out;
+            z-index: 10;
+            width: 90%;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ff4757;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px #ff4757;
+        }
+
+        .message {
+            font-size: 1.3rem;
+            color: #fff;
+            line-height: 2;
+            margin: 20px 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .highlight {
+            color: #ffd700;
+            font-weight: 600;
+            text-shadow: 0 0 15px #ffd700;
+        }
+
+        .heart {
+            font-size: 3rem;
+            color: #ff4757;
+            animation: heartbeat 1.5s infinite;
+            margin: 20px 0;
+        }
+
+        .back-btn {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 15px #ff4757;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff4757;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3rem; }
+            .message-container { padding: 35px; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .message { font-size: 1.1rem; }
+            .message-container { padding: 30px; width: 85%; }
+            .heart { font-size: 2.5rem; }
+            .back-btn { font-size: 0.9rem; padding: 10px 25px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            .message { font-size: 1rem; }
+            .message-container { padding: 20px; width: 90%; }
+            .heart { font-size: 2rem; }
+            .back-btn { font-size: 0.8rem; padding: 8px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message-container">
+        <h1>Happy 34th Monthsary, Mahal Ko ❤️</h1>
+        
+        <div class="message">
+            <p>My dearest love,</p>
+            
+            <p>34 months ago, you walked into my life and changed everything. Every day with you has been a blessing, every laugh has been a treasure, and every moment has been a gift I never want to end.</p>
+            
+            <p class="highlight">You are not just my partner, you are my best friend, my safe place, and my greatest adventure.</p>
+            
+            <p>Thank you for your patience, your kindness, your love, and for being exactly who you are. I fall in love with you more every single day.</p>
+            
+            <p>Here's to 34 months of us, and to many, many more to come. I love you more than words can ever express.</p>
+            
+            <p class="highlight">Forever yours, always.</p>
+        </div>
+
+        <div class="heart">❤️ 💖 ❤️</div>
+
+        <a href="index.html" class="back-btn">Home 🎆</a>
+    </div>
+
+    <script>
+        // Add some floating hearts in the background
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'absolute';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            heart.style.animation = 'floatUp 4s linear forwards';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes floatUp {
+                to {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
